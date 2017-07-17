@@ -3,11 +3,16 @@ set(CMAKE_TOOLCHAIN_FILE ${CMAKE_SOURCE_DIR}/cmake/ArduinoToolchain.cmake)
 set(PROJECT_NAME BasicOTA_new)
 project(${PROJECT_NAME})
 
-set(${CMAKE_PROJECT_NAME}_SKETCH BasicOTA_new.ino)
+register_hardware_platform(/home/vitaliy/.arduino15/packages/esp8266/hardware/esp8266/2.3.0)
 
-register_hardware_platform(${ARDUINO_SDK_PATH}/esp8266com/esp8266/)
+set(${CMAKE_PROJECT_NAME}_SKETCH ${PROJECT_NAME}.ino)
 
 link_directories(${ARDUINO_SDK}/libraries)
+
+
+print_board_list()
+print_programmer_list()
+
 
 #### Uncomment below additional settings as needed.
 # set(${CMAKE_PROJECT_NAME}_BOARD mega)
@@ -16,15 +21,11 @@ link_directories(${ARDUINO_SDK}/libraries)
 # set(mega.upload.protocol wiring)
 # set(mega.upload.speed 115200)
 
-print_board_list()
-
-set(${CMAKE_PROJECT_NAME}_BOARD esp)
+set(${CMAKE_PROJECT_NAME}_BOARD d1_mini)
 set(${CMAKE_PROJECT_NAME}_PORT /dev/ttyUSB0)
-set(mega.build.mcu esp8266)
-set(mega.upload.protocol wiring)
+# set(mega.build.mcu atmega2560)
+# set(mega.upload.protocol wiring)
 set(mega.upload.speed 115200)
 
 
 generate_arduino_firmware(${CMAKE_PROJECT_NAME})
-
-
