@@ -5,13 +5,15 @@ set(USER_LIBS /home/vitaliy/Arduino/libraries)
 
 set(ARDUINO_VERSION_PATH ${ESP8266_PLATFORM_PATH}/tools/sdk/version)
 
-set(CMAKE_TOOLCHAIN_FILE ${CMAKE_SOURCE_DIR}/cmake/Esp8266Toolchain.cmake)
+#set(CMAKE_TOOLCHAIN_FILE ${CMAKE_SOURCE_DIR}/cmake/Esp8266Toolchain.cmake)
+set(CMAKE_TOOLCHAIN_FILE ${CMAKE_SOURCE_DIR}/cmake/ArduinoToolchain.cmake)
 set(PROJECT_NAME BasicOTA_new)
 project(${PROJECT_NAME})
 
 register_hardware_platform(${ESP8266_PLATFORM_PATH})
 
 set(${CMAKE_PROJECT_NAME}_BOARD d1_mini)
+
 message("Selected board: ${${CMAKE_PROJECT_NAME}_BOARD}")
 
 
