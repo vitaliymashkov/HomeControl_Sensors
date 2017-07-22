@@ -29,6 +29,10 @@ message("Arduino SDK version: ${ARDUINO_SDK_VERSION}")
 set(${CMAKE_PROJECT_NAME}_SKETCH ${PROJECT_NAME}.ino)
 
 include_directories(${ESP8266_PLATFORM_PATH}/tools/sdk/include/)
+
+set(LIBS)
+setup_arduino_libraries(ALL_LIBS ${${CMAKE_PROJECT_NAME}_BOARD} "${USER_LIBS}" "" "${LIB_DEP_INCLUDES}" "")
+
 include_directories(${USER_LIBS})
 
 print_board_list()
